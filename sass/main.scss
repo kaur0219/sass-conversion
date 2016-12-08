@@ -1,1 +1,232 @@
 // main SASS file
+@import '_mixins';
+@import '_variables';
+* {
+    padding: 0;
+    margin: 0;
+    @include box-size(border-box);
+}
+
+*:after,
+*:before {
+    @include box-size(inherit);
+}
+
+html {
+    font-size: $font_style_body;
+    font-family: $font_family_body;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: $font_family_heading;
+}
+
+ul {
+    list-style: none;
+}
+
+.clearfix {
+    &:after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+}
+
+.bg-header {
+    @include bg($color_blue_light, $color_gray_dark);
+    border-bottom: 1rem solid $color_blue_medium;
+    border-top: 1rem solid $color_bule_dark;
+    position: relative;
+    &:after,
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: -1rem;
+        width: 30%;
+        height: 1rem;
+        background-color: $color_bule_dark;
+    }
+    &:before {
+        left: 0;
+    }
+    &:after {
+        right: 0;
+    }
+}
+
+.bg-focal {
+    @include bg($color_brown_light, $color_brown_dark);
+}
+
+.bg-content1 {
+    @include bg($color_white, $color_gray_dark);
+}
+
+.bg-content2 {
+    @include bg($color_blue_light, $color_bule_dark);
+}
+
+.bg-footer {
+    @include bg($color_white, $color_gray_light);
+}
+
+.defaultWidth_center {
+    width: $width_default;
+    margin: 0 auto;
+}
+
+header {
+    @extend .defaultWidth_center;
+    position: relative;
+    h1 {
+        width: 100%;
+        padding: 0 2rem;
+    }
+    nav {
+        width: 100%;
+    }
+    ul li {
+        width: 100%;
+        float: none;
+    }
+    nav {
+        padding: 2rem 0;
+        clear: both;
+        ul > li > a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            @include bg($color_white, $color_gray_dark);
+            @include fs_padding($font_style_regular, 1.0rem 2rem);
+            letter-spacing: 0.25rem;
+            border: 1px solid $color_gray_light;
+            border-bottom: none;
+            line-height: 1;
+            &:hover {
+                font-weight: 700;
+                color: $color_brown_dark;
+            }
+        }
+    }
+    h1 {
+        color: $color_brown_dark;
+        letter-spacing: 0.1rem;
+    }
+    i.fa-lg {
+        display: block;
+        width: 25%;
+        float: left;
+        font-size: $font_style_large;
+        line-height: 12.7936rem;
+        color: $color_brown_light;
+        ~span {
+            float: right;
+            width: 75%;
+            font-size: $font_style_med;
+            padding-left: 1rem;
+            text-align: right;
+        }
+    }
+}
+
+section {
+    &.focal {
+        @extend .defaultWidth_center;
+    }
+    &.content1,
+    &.content2 {
+        padding: 2rem 0;
+    }
+}
+
+.row {
+    clear: both;
+}
+
+[class*="col-"] {
+    float: left;
+}
+
+@include col-x;
+.col-2 {
+    ;
+    padding-bottom: 2rem;
+    border-left: 1px solid $color_bule_dark;
+    margin-bottom: 2rem;
+}
+
+.focal {
+    h2 {
+        @include fs_padding($font_style_small, 2rem 2rem 1rem 2rem);
+        line-height: 1.2;
+    }
+    .author {
+        @include fs_padding($font_style_content, 0.2rem 2rem 2rem);
+    }
+}
+
+.content1 {
+    h3 {
+        @include fs_padding($font_style_small, 0.2rem 2rem 2rem);
+    }
+    i {
+        vertical-align: middle;
+        padding-right: 2rem;
+    }
+    p {
+        @include fs_padding($font_style_regular, 0.5rem 2rem 2rem);
+    }
+}
+
+.content2 {
+    h3 {
+        @include fs_padding($font_style_small, 1rem 2rem 0.5rem);
+    }
+    h4 {
+        @include fs_padding($font_style_small, 1rem 2rem 0rem);
+    }
+    p {
+        @include fs_padding($font_style_regular, 0.5rem 2rem 1rem);
+    }
+    li {
+        @include fs_padding($font_style_regular, 0.5rem 2rem);
+    }
+}
+
+
+footer {
+    padding: 2rem 0;
+    .col-2:first-child {
+        border-left: 0;
+    }
+}
+
+
+footer {
+    h4 {
+        @include fs_padding($font_style_regular, 0.5rem 2rem);
+        color: $color_brown_dark;
+    }
+    p {
+        @include fs_padding($font_style_content, 0.5rem 2rem);
+        color: $color_gray_dark;
+    }
+    .fa-circle {
+        color: $color_gray_dark;
+    }
+    footer h4[lang=de] {
+        display: block;
+    }
+    footer h4[lang=en],
+    footer h4[lang=ar],
+    footer h4[lang=ru] {
+        display: none;
+    }
+}
+
+@import '_queries';

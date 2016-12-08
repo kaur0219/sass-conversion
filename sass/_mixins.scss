@@ -1,0 +1,90 @@
+@mixin fs_padding($font-size, $padding) {
+    font-size: $font-size;
+    padding: $padding;
+}
+
+@mixin width_margin($width, $margin) {
+    width: $width;
+    margin: $margin;
+}
+
+@mixin bg($background_color, $color) {
+    background-color: $background_color;
+    color: $color;
+}
+
+@mixin extend_nav {
+    position: static;
+    clear: both;
+    width: 100%;
+    padding: 0;
+}
+
+@mixin extend_ul_li {
+    width: 20%;
+    float: left;
+}
+
+@mixin extend_a {
+    line-height: 2rem;
+    border: none;
+    border-left: 1px solid $color_gray_light;
+    background-color: $color_white;
+}
+
+@mixin box-size($size) {
+    -webkit-box-sizing: $size;
+    -moz-box-sizing: $size;
+    box-sizing: $size;
+}
+
+@mixin extend_icon {
+    display: inline;
+    vertical-align: baseline;
+    float: none;
+    font-size: $font_style_media;
+    line-height: 6.3968rem;
+    ~ span {
+        float: none;
+        letter-spacing: 0.25rem;
+        font-size: $font_style_med;
+        text-align: left;
+    }
+}
+
+@mixin col-x {
+    @for $a from 1 through 4 {
+        $width: percentage(1 / $a);
+        .col-#{$a} {
+            width: $width;
+        }
+    }
+}
+
+@mixin respond_to($m) {
+    @if $m==small_screen {
+        @media all and (min-width: $width_small + 1) and (max-width: $width_medium) {
+            @content;
+        }
+    }
+    @else if $m==medium_screen {
+        @media all and (min-width: $width_medium + 1) and (max-width: $width_large) {
+            @content;
+        }
+    }
+    @else if $m==wide_screen {
+        @media all and (min-width: $width_large + 1) {
+            @content;
+        }
+    }
+}
+
+@mixin section_content {
+    h4 {
+        font-size: $font_style_regular;
+    }
+    li {
+        font-size: $font_style_regular;
+    }
+}
+
